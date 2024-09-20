@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>258</width>
+    <height>331</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="level_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>170</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>高级</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="level_1">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>初级</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="level_4">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>240</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>地狱</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="level_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>100</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>中级</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>level_1</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>lev_1()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>58</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>22</x>
+     <y>48</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>level_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>lev_2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>126</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>level_3</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>lev_3()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>152</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>17</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>level_4</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>lev_4()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>262</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>16</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>lev_1()</slot>
+  <slot>lev_2()</slot>
+  <slot>lev_3()</slot>
+  <slot>lev_4()</slot>
+ </slots>
+</ui>

@@ -1,7 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 
 #include "QtWidgetsApplication1.h"
-#include "ui_diff.h"
+#include "diff.h"
 #include <QDialog>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -10,8 +10,8 @@
 #include <random>
 #include <iterator>
 
-extern int hrl[16] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
 extern const QString none = "";
+extern int hrl[16] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
 
 
 QtWidgetsApplication1::QtWidgetsApplication1(QWidget* parent)
@@ -70,10 +70,17 @@ void QtWidgetsApplication1::openfile() {
 
 
 void QtWidgetsApplication1::gen() {
+    int dg = 0;
     openDiffWindow();
     shuffleArray(hrl, 15);
-    while (judgment() % 2 != 0) {
-        shuffleArray(hrl, 15);
+    while (1) {
+        dg = judgment();
+        if (dg % 2 != 0 || dg < levell || dg > levelr) {
+            shuffleArray(hrl, 15);
+        }
+        else {
+            break;
+        }
     }
     update();
 }
@@ -81,10 +88,11 @@ void QtWidgetsApplication1::gen() {
 void QtWidgetsApplication1::update() {
     for (int i = 0; i < 16; ++i) {
         if (hrl[i] == 0) {
+            buttons[i]->setEnabled(false);
             buttons[i]->setText(none);
-            printf("%d", hrl[i]);
         }
         else {
+            buttons[i]->setEnabled(true);
             buttons[i]->setText(QString::number(hrl[i]));
         }
     }
@@ -117,10 +125,41 @@ void QtWidgetsApplication1::shuffleArray(int arr[], int n) {
 
 void QtWidgetsApplication1::openDiffWindow()
 {
-    QDialog* diffDialog = new QDialog(this);
-    Ui::Dialog ui_diff;
-    ui_diff.setupUi(diffDialog);
+    diffDialog = new QDialog(this);
+    diff.setupUi(diffDialog);
+    connect(&diff, &Ui::Dialog::level1Clicked, this, &QtWidgetsApplication1::handleLevel1);
+    connect(&diff, &Ui::Dialog::level2Clicked, this, &QtWidgetsApplication1::handleLevel2);
+    connect(&diff, &Ui::Dialog::level3Clicked, this, &QtWidgetsApplication1::handleLevel3);
+    connect(&diff, &Ui::Dialog::level4Clicked, this, &QtWidgetsApplication1::handleLevel4);
     diffDialog->exec();
+}
+
+void QtWidgetsApplication1::handleLevel1() {
+    qDebug() << "Level 1 clicked";
+    levell = 20;
+    levelr = 54;
+    diffDialog->close();
+}
+
+void QtWidgetsApplication1::handleLevel2() {
+    qDebug() << "Level 2 clicked";
+    levell = 54;
+    levelr = 78;
+    diffDialog->close();
+}
+
+void QtWidgetsApplication1::handleLevel3() {
+    qDebug() << "Level 3 clicked";
+    levell = 78;
+    levelr = 100;
+    diffDialog->close();
+}
+
+void QtWidgetsApplication1::handleLevel4() {
+    qDebug() << "Level 4 clicked";
+    levell = 100;
+    levelr = 150;
+    diffDialog->close();
 }
 
 void QtWidgetsApplication1::_1Clicked()

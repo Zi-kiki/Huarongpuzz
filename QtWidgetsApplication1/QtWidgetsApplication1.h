@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_QtWidgetsApplication1.h"
+#include "diff.h"
 #include <QFileDialog>
 
 class QtWidgetsApplication1 : public QMainWindow
@@ -15,6 +16,10 @@ public:
 private:
     Ui::QtWidgetsApplication1Class ui;
     QPushButton* buttons[16];
+    Ui::Dialog diff;
+    QDialog* diffDialog = nullptr;
+    int levell = 0;
+    int levelr = 0;
 
 private slots:
     void _1Clicked();
@@ -39,5 +44,9 @@ private slots:
     void BtnClicked(int index);
     void shuffleArray(int arr[], int n);
     void openDiffWindow();
+    void handleLevel1();
+    void handleLevel2();
+    void handleLevel3();
+    void handleLevel4();
     int judgment();
 };

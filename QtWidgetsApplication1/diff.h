@@ -1,11 +1,3 @@
-/********************************************************************************
-** Form generated from reading UI file 'diff.ui'
-**
-** Created by: Qt User Interface Compiler version 5.15.2
-**
-** WARNING! All changes made in this file will be lost when recompiling UI file!
-********************************************************************************/
-
 #ifndef UI_DIFF_H
 #define UI_DIFF_H
 
@@ -13,18 +5,26 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QPushButton>
+#include <QtCore/QObject>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_Dialog : public QDialog
 {
-public:
-    QPushButton *level_3;
-    QPushButton *level_1;
-    QPushButton *level_4;
-    QPushButton *level_2;
+    Q_OBJECT
 
-    void setupUi(QDialog *Dialog)
+public:
+    QPushButton* level_3;
+    QPushButton* level_1;
+    QPushButton* level_4;
+    QPushButton* level_2;
+
+    Ui_Dialog(QWidget* parent = nullptr) : QDialog(parent)
+    {
+        setupUi(this);
+    }
+
+    void setupUi(QDialog* Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
@@ -49,15 +49,15 @@ public:
         level_2->setFont(font);
 
         retranslateUi(Dialog);
-        QObject::connect(level_1, SIGNAL(clicked()), Dialog, SLOT(lev_1()));
-        QObject::connect(level_2, SIGNAL(clicked()), Dialog, SLOT(lev_2()));
-        QObject::connect(level_3, SIGNAL(clicked()), Dialog, SLOT(lev_3()));
-        QObject::connect(level_4, SIGNAL(clicked()), Dialog, SLOT(lev_4()));
+        QObject::connect(level_1, &QPushButton::clicked, this, &Ui_Dialog::lev_1);
+        QObject::connect(level_2, &QPushButton::clicked, this, &Ui_Dialog::lev_2);
+        QObject::connect(level_3, &QPushButton::clicked, this, &Ui_Dialog::lev_3);
+        QObject::connect(level_4, &QPushButton::clicked, this, &Ui_Dialog::lev_4);
 
         QMetaObject::connectSlotsByName(Dialog);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QDialog* Dialog)
     {
         Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Dialog", nullptr));
         level_3->setText(QCoreApplication::translate("Dialog", "\351\253\230\347\272\247", nullptr));
@@ -65,19 +65,24 @@ public:
         level_4->setText(QCoreApplication::translate("Dialog", "\345\234\260\347\213\261", nullptr));
         level_2->setText(QCoreApplication::translate("Dialog", "\344\270\255\347\272\247", nullptr));
     } // retranslateUi
+
+signals:
+    void level1Clicked();
+    void level2Clicked();
+    void level3Clicked();
+    void level4Clicked();
+
 private slots:
-    void lev_1();
-};
+    void lev_1() { emit level1Clicked(); close(); qApp->processEvents(); destroy(); }
+    void lev_2() { emit level2Clicked(); close(); }
+    void lev_3() { emit level3Clicked(); close(); }
+    void lev_4() { emit level4Clicked(); close(); }
+}; 
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class Dialog : public Ui_Dialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
 #endif // UI_DIFF_H
-
-
-void lev_1() {
-
-}

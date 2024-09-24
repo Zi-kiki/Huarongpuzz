@@ -319,12 +319,14 @@
     </property>
     <addaction name="newfile"/>
     <addaction name="openfile"/>
+    <addaction name="save"/>
     <addaction name="gen"/>
    </widget>
    <widget class="QMenu" name="menu_E">
     <property name="title">
      <string>编辑(E)</string>
     </property>
+    <addaction name="solve"/>
     <addaction name="setting"/>
    </widget>
    <addaction name="menu"/>
@@ -372,6 +374,28 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="save">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
+   </property>
+   <property name="text">
+    <string>保存(S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="solve">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::GoDown"/>
+   </property>
+   <property name="text">
+    <string>求解(P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

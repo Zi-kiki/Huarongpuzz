@@ -2,6 +2,7 @@
 #define UI_DIFF_H
 
 #include <QtCore/QVariant>
+#include <qdebug.h>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QPushButton>
@@ -71,13 +72,22 @@ signals:
     void level2Clicked();
     void level3Clicked();
     void level4Clicked();
+    void handleCloseEvent();
 
 private slots:
-    void lev_1() { emit level1Clicked(); close(); qApp->processEvents(); destroy(); }
+    void lev_1() { emit level1Clicked(); close(); }
     void lev_2() { emit level2Clicked(); close(); }
     void lev_3() { emit level3Clicked(); close(); }
     void lev_4() { emit level4Clicked(); close(); }
+
+protected:
+    void closeEvent(QCloseEvent* event) override {
+        emit handleCloseEvent();
+        qDebug() << "close";
+    }
 }; 
+
+
 
 namespace Ui {
     class Dialog : public Ui_Dialog {};

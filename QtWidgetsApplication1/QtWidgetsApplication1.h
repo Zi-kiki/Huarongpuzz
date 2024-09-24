@@ -4,6 +4,15 @@
 #include "ui_QtWidgetsApplication1.h"
 #include "diff.h"
 #include <QFileDialog>
+#include <algorithm>
+#include <random>
+#include <iterator>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
 
 class QtWidgetsApplication1 : public QMainWindow
 {
@@ -18,8 +27,10 @@ private:
     QPushButton* buttons[16];
     Ui::Dialog diff;
     QDialog* diffDialog = nullptr;
+    void resetArray();
     int levell = 0;
     int levelr = 0;
+    void setWidgetsEnabled(QWidget* parent, bool enabled);
 
 private slots:
     void _1Clicked();
@@ -38,15 +49,21 @@ private slots:
     void _14Clicked();
     void _15Clicked();
     void _16Clicked();
-    void openfile();
     void gen();
     void update();
+    void openfile();
     void BtnClicked(int index);
     void shuffleArray(int arr[], int n);
+    void reverseArray();
     void openDiffWindow();
     void handleLevel1();
     void handleLevel2();
     void handleLevel3();
     void handleLevel4();
+    void handleCloseEvent();
+    void solve();
+    void save();
+    int rand(int a, int b, int c);
+    int change(int c, int i);
     int judgment();
 };
